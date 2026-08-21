@@ -4,12 +4,12 @@ let handler = async (m, { conn, isOwner, isROwner, command }) => {
   let type = command.toLowerCase()
 
   if (!(isOwner || isROwner)) {
-    return conn.reply(m.chat, `🐱 𓆩 ***𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟*** 𓆪 🐱\n\n🍕 *Solo owners pueden usar este comando*`, m)
+    return conn.reply(m.chat, `🐱 𓆩 ***𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠*** 𓆪 🐱\n\n🍕 *Solo owners pueden usar este comando*`, m)
   }
 
   switch (type) {
     case 'banchat': case 'banearchat':
-      if (chat.isBanned) return m.reply(`🐱 𓆩 ***𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟*** 𓆪 🐱\n\n🍕 *Este chat ya se encuentra baneado.*`)
+      if (chat.isBanned) return m.reply(`🐱 𓆩 ***𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠*** 𓆪 🐱\n\n🍕 *Este chat ya se encuentra baneado.*`)
       chat.isBanned = true
       await conn.reply(m.chat, `🐱 𓆩 𝗖𝗛𝗔𝗧 𝗕𝗔𝗡𝗘𝗔𝗗𝗢 𓆪 🐱
 
@@ -21,11 +21,11 @@ let handler = async (m, { conn, isOwner, isROwner, command }) => {
 👑 *Por:* @${m.sender.split('@')[0]}
 
 ━━━━━━━━━━━
-*Powered by*: ***Garfield Bot Oficial*** 🍕`, m, { mentions: [m.sender] })
+*Powered by*: ***Lu Bot Prem*** 🍕`, m, { mentions: [m.sender] })
       break
 
     case 'unbanchat': case 'desbanearchat':
-      if (!chat.isBanned) return m.reply(`🐱 𓆩 ***𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟*** 𓆪 🐱\n\n🍕 *Este chat no está baneado.*`)
+      if (!chat.isBanned) return m.reply(`🐱 𓆩 ***𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠*** 𓆪 🐱\n\n🍕 *Este chat no está baneado.*`)
       chat.isBanned = false
       await conn.reply(m.chat, `🐱 𓆩 𝗖𝗛𝗔𝗧 𝗗𝗘𝗦𝗕𝗔𝗡𝗘𝗔𝗗𝗢 𓆪 🐱
 
@@ -37,7 +37,7 @@ let handler = async (m, { conn, isOwner, isROwner, command }) => {
 👑 *Por:* @${m.sender.split('@')[0]}
 
 ━━━━━━━━━━━
-*Powered by*: ***Garfield Bot Oficial*** 🍕`, m, { mentions: [m.sender] })
+*Powered by*: ***Lu Bot Prem*** 🍕`, m, { mentions: [m.sender] })
       break
 
     default:
