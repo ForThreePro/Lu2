@@ -15,7 +15,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
   // ============ YTMP4 ============
   if (command === 'ytmp4') {
-    if (!text) return m.reply(`🐱 𓆩 ***𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟*** 𓆪 🐱\n\n🚩 *Ingresa un enlace de YouTube*\n📌 *Ejemplo:* ${usedPrefix + command} https://youtube.com/...`)
+    if (!text) return m.reply(`🐱 𓆩 ***𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠*** 𓆪 🐱\n\n🚩 *Ingresa un enlace de YouTube*\n📌 *Ejemplo:* ${usedPrefix + command} https://youtube.com/...`)
     let res = await yts(text)
     let vid = res.videos[0]
     if (!vid) return m.reply(`🍕 *No se encontró el video.*`)
@@ -24,14 +24,14 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let json = await (await fetch(apiUrl)).json()
     if (!json.status) return m.reply(`❌ *Error al procesar el video.*`)
 
-    let cap = `🐱 𓆩 𝗬𝗢𝗨𝗧𝗨𝗕𝗘 𝗠𝗣𝟰 𓆪 🐱\n\n🎶 *Título:* ${vid.title}\n⏳ *Duración:* ${vid.timestamp}\n📁 *Formato:* MP4 720p\n👤 *Solicitado por:* ${user}\n🏷 *Grupo:* ${groupName}\n━━━━━━━━━━━\n*Powered by*: ***Garfield Bot Oficial*** 🍕`
+    let cap = `🐱 𓆩 𝗬𝗢𝗨𝗧𝗨𝗕𝗘 𝗠𝗣𝟰 𓆪 🐱\n\n🎶 *Título:* ${vid.title}\n⏳ *Duración:* ${vid.timestamp}\n📁 *Formato:* MP4 720p\n👤 *Solicitado por:* ${user}\n🏷 *Grupo:* ${groupName}\n━━━━━━━━━━━\n*Powered by*: ***Lu Bot Prem*** 🍕`
     await conn.sendMessage(m.chat, { image: { url: vid.thumbnail }, caption: cap, mentions: [m.sender] }, { quoted: m })
     await conn.sendMessage(m.chat, { video: { url: json.data.dl }, mimetype: 'video/mp4' }, { quoted: m })
   }
 
   // ============ YTMP3 ============
   if (command === 'ytmp3') {
-    if (!text) return m.reply(`🐱 𓆩 ***𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟*** 𓆪 🐱\n\n🚩 *Ingresa un enlace de YouTube*\n📌 *Ejemplo:* ${usedPrefix + command} https://youtube.com/...`)
+    if (!text) return m.reply(`🐱 𓆩 ***𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠*** 𓆪 🐱\n\n🚩 *Ingresa un enlace de YouTube*\n📌 *Ejemplo:* ${usedPrefix + command} https://youtube.com/...`)
     let res = await yts(text)
     let vid = res.videos[0]
     if (!vid) return m.reply(`🍕 *No se encontró el video.*`)
@@ -40,14 +40,14 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     let json = await (await fetch(apiUrl)).json()
     if (!json.status) return m.reply(`❌ *Error al procesar el audio.*`)
 
-    let cap = `🐱 𓆩 𝗬𝗢𝗨𝗧𝗨𝗕𝗘 𝗠𝗣𝟯 𓆪 🐱\n\n🎶 *Título:* ${vid.title}\n⏳ *Duración:* ${vid.timestamp}\n📁 *Formato:* MP3\n👤 *Solicitado por:* ${user}\n🏷 *Grupo:* ${groupName}\n━━━━━━━━━━━\n*Powered by*: ***Garfield Bot Oficial*** 🍕`
+    let cap = `🐱 𓆩 𝗬𝗢𝗨𝗧𝗨𝗕𝗘 𝗠𝗣𝟯 𓆪 🐱\n\n🎶 *Título:* ${vid.title}\n⏳ *Duración:* ${vid.timestamp}\n📁 *Formato:* MP3\n👤 *Solicitado por:* ${user}\n🏷 *Grupo:* ${groupName}\n━━━━━━━━━━━\n*Powered by*: ***Lu Bot Prem*** 🍕`
     await conn.sendMessage(m.chat, { image: { url: vid.thumbnail }, caption: cap, mentions: [m.sender] }, { quoted: m })
     await conn.sendMessage(m.chat, { audio: { url: json.data.dl }, mimetype: 'audio/mpeg' }, { quoted: m })
   }
 
   // ============ PLAY / PLAY2 ============
   if (command === 'play' || command === 'play2') {
-    if (!text) return m.reply(`🐱 𓆩 ***𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟*** 𓆪 🐱\n\n🚩 *Escribe lo que deseas buscar*\n📌 *Ejemplo:* ${usedPrefix + command} king nasir`)
+    if (!text) return m.reply(`🐱 𓆩 ***𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠*** 𓆪 🐱\n\n🚩 *Escribe lo que deseas buscar*\n📌 *Ejemplo:* ${usedPrefix + command} king nasir`)
     await m.react('🔍')
     let res = await yts(text)
     let vid = res.videos[0]
@@ -56,12 +56,12 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
     let isVideo = command === 'play2'
     let apiUrl = isVideo
-   ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${key}`
+  ? `https://api.evogb.org/dl/ytmp4?url=${encodeURIComponent(vid.url)}&quality=720&key=${key}`
       : `https://api.evogb.org/dl/ytmp3?url=${encodeURIComponent(vid.url)}&key=${key}`
     let json = await (await fetch(apiUrl)).json()
     if (!json.status) { await m.react('❌'); return m.reply(`❌ *Error al procesar la descarga.*`) }
 
-    let cap = `🐱 𓆩 𝗣𝗟𝗔𝗬 𓆪 🐱\n\n🎶 *Título:* ${vid.title}\n⏳ *Duración:* ${vid.timestamp}\n👤 *Autor:* ${vid.author.name}\n📁 *Formato:* ${isVideo? 'VIDEO MP4' : 'AUDIO MP3'}\n👤 *Solicitado por:* ${user}\n🏷 *Grupo:* ${groupName}\n━━━━━━━━━━━\n*Powered by*: ***Garfield Bot Oficial*** 🍕`
+    let cap = `🐱 𓆩 𝗣𝗟𝗔𝗬 𓆪 🐱\n\n🎶 *Título:* ${vid.title}\n⏳ *Duración:* ${vid.timestamp}\n👤 *Autor:* ${vid.author.name}\n📁 *Formato:* ${isVideo? 'VIDEO MP4' : 'AUDIO MP3'}\n👤 *Solicitado por:* ${user}\n🏷 *Grupo:* ${groupName}\n━━━━━━━━━━━\n*Powered by*: ***Lu Bot Prem*** 🍕`
     await conn.sendMessage(m.chat, { image: { url: vid.thumbnail }, caption: cap, mentions: [m.sender] }, { quoted: m })
 
     let ext = isVideo? 'mp4' : 'mp3'
@@ -80,12 +80,12 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
   // ============ TIKTOK ============
   if (command === 'tiktok' || command === 'tiktoksearch') {
-    if (!text) return m.reply(`🐱 𓆩 ***𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟*** 𓆪 🐱\n\n🚩 *Ingresa un enlace o búsqueda de TikTok*`)
+    if (!text) return m.reply(`🐱 𓆩 ***𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠*** 𓆪 🐱\n\n🚩 *Ingresa un enlace o búsqueda de TikTok*`)
     try {
       if (command === 'tiktoksearch') {
         let res = await (await fetch(`https://api.evogb.org/search/tiktok?query=${text}&key=${key}`)).json()
         let video = res.data[0]
-        let caption = `🐱 𓆩 𝗧𝗜𝗞𝗧𝗢𝗞 𝗦𝗘𝗔𝗥𝗖𝗛 𓆪 🐱\n\n*Título:* ${video.title}\n*Autor:* ${video.author.nickname}\n👤 *Solicitado por:* ${user}\n🏷 *Grupo:* ${groupName}\n━━━━━━━━━━━\n*Powered by*: ***Garfield Bot Oficial*** 🍕`
+        let caption = `🐱 𓆩 𝗧𝗜𝗞𝗧𝗢𝗞 𝗦𝗘𝗔𝗥𝗖𝗛 𓆪 🐱\n\n*Título:* ${video.title}\n*Autor:* ${video.author.nickname}\n👤 *Solicitado por:* ${user}\n🏷 *Grupo:* ${groupName}\n━━━━━━━━━━━\n*Powered by*: ***Lu Bot Prem*** 🍕`
         await conn.sendFile(m.chat, video.dl, 'tiktok.mp4', caption, m, false, { mentions: [m.sender] })
       } else {
         let res = await (await fetch(`https://api.evogb.org/dl/tiktok?url=${text}&key=${key}`)).json()
@@ -99,7 +99,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
   // ============ SPOTIFY ============
   if (command === 'spotify') {
-    if (!text) return m.reply(`🐱 𓆩 ***𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟*** 𓆪 🐱\n\n🚩 *Escribe el nombre de la canción*\n📌 *Ejemplo:* ${usedPrefix + command} Lupita`)
+    if (!text) return m.reply(`🐱 𓆩 ***𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠*** 𓆪 🐱\n\n🚩 *Escribe el nombre de la canción*\n📌 *Ejemplo:* ${usedPrefix + command} Lupita`)
     await m.react('🔍')
     try {
       let searchRes = await fetch(`https://api.evogb.org/search/spotify?query=${encodeURIComponent(text)}&key=${key}`)
@@ -111,7 +111,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       let dlData = await dlRes.json()
       if (!dlData.status) { await m.react('❌'); return m.reply(`❌ *Error al obtener el enlace de descarga.*`) }
 
-      let cap = `🐱 𓆩 𝗦𝗣𝗢𝗧𝗜𝗙𝗬 𓆪 🐱\n\n🎶 *Título:* ${dlData.data.name}\n👤 *Artista:* ${dlData.data.artist}\n💿 *Álbum:* ${dlData.data.album}\n⏳ *Duración:* ${dlData.data.duration}\n📅 *Año:* ${dlData.data.year}\n👤 *Solicitado por:* ${user}\n🏷 *Grupo:* ${groupName}\n━━━━━━━━━━━\n*Powered by*: ***Garfield Bot Oficial*** 🍕`
+      let cap = `🐱 𓆩 𝗦𝗣𝗢𝗧𝗜𝗙𝗬 𓆪 🐱\n\n🎶 *Título:* ${dlData.data.name}\n👤 *Artista:* ${dlData.data.artist}\n💿 *Álbum:* ${dlData.data.album}\n⏳ *Duración:* ${dlData.data.duration}\n📅 *Año:* ${dlData.data.year}\n👤 *Solicitado por:* ${user}\n🏷 *Grupo:* ${groupName}\n━━━━━━━━━━━\n*Powered by*: ***Lu Bot Prem*** 🍕`
       await conn.sendMessage(m.chat, { image: { url: dlData.data.image }, caption: cap, mentions: [m.sender] }, { quoted: m })
       await conn.sendMessage(m.chat, { audio: { url: dlData.data.url }, mimetype: 'audio/mpeg' }, { quoted: m })
       await m.react('✅')
@@ -127,7 +127,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
       let result = await response.json()
       if (!result.status ||!result.data) { await m.react('⚠️'); return m.reply('❌ No se pudo localizar el archivo.') }
       let { name, size, date, dl } = result.data
-      let caption = `🐱 𓆩 𝗔𝗥𝗖𝗛𝗜𝗩𝗢 𓆪 🐱\n\n🏷 *Nombre:* ${name}\n⚖ *Tamaño:* ${size}\n📅 *Fecha:* ${date}\n👤 *Solicitado por:* ${user}\n🏷 *Grupo:* ${groupName}\n━━━━━━━━━━━\n*Powered by*: ***Garfield Bot Oficial*** 🍕`
+      let caption = `🐱 𓆩 𝗔𝗥𝗖𝗛𝗜𝗩𝗢 𓆪 🐱\n\n🏷 *Nombre:* ${name}\n⚖ *Tamaño:* ${size}\n📅 *Fecha:* ${date}\n👤 *Solicitado por:* ${user}\n🏷 *Grupo:* ${groupName}\n━━━━━━━━━━━\n*Powered by*: ***Lu Bot Prem*** 🍕`
       await conn.sendFile(m.chat, dl, name, caption, m, false, { mentions: [m.sender] })
       await m.react('✅')
     } catch { await m.react('❌'); m.reply('❌ Error en el servidor de descarga.') }
