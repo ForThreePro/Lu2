@@ -1,7 +1,7 @@
 import { WAMessageStubType } from '@whiskeysockets/baileys'
 
 const handler = async (m, { conn, args, isAdmin, isOwner }) => {
-  if (!isAdmin &&!isOwner) return conn.reply(m.chat, `🐱 𓆩 ***𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗢𝗙𝗜𝗖𝗜𝗔𝗟*** 𓆪 🐱\n\n🍕 *Solo admins pueden usar este comando*`, m)
+  if (!isAdmin &&!isOwner) return conn.reply(m.chat, `🐱 𓆩 ***𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠*** 𓆪 🐱\n\n🍕 *Solo admins pueden usar este comando*`, m)
   let chat = global.db.data.chats[m.chat]
   if (!chat) global.db.data.chats[m.chat] = {}
 
@@ -12,7 +12,7 @@ const handler = async (m, { conn, args, isAdmin, isOwner }) => {
     chat.bienvenida = false
     await conn.reply(m.chat, `😼 𓆩 ***𝗕𝗜𝗘𝗡𝗩𝗘𝗡𝗜𝗗𝗔*** 𓆪 😼\n\n🔴 *Desactivada*`, m)
   } else {
-    await conn.reply(m.chat, `🐱 𓆩 ***𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗢𝗙𝗜𝗖𝗜𝗔𝗟*** 𓆪 🐱\n\n📌 *Uso:* ${m.prefix}bienvenida on/off`, m)
+    await conn.reply(m.chat, `🐱 𓆩 ***𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠*** 𓆪 🐱\n\n📌 *Uso:* ${m.prefix}bienvenida on/off`, m)
   }
 }
 
@@ -35,7 +35,7 @@ handler.before = async function (m, { conn, groupMetadata }) {
     try {
       pp = await conn.profilePictureUrl(userJid, 'image')
     } catch {
-      pp = 'https://files.evogb.win/E2yVdA.jpg' // URL GARFIELD FALLBACK
+      pp = 'https://files.evogb.win/zocch8.jpg' // URL LU BOT PREM FALLBACK
     }
 
     const userTag = `@${userJid.split('@')[0]}`
