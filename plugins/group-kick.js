@@ -1,7 +1,7 @@
 let handler = async (m, { conn, participants, usedPrefix, command }) => {
     let mentionedJid = m.mentionedJid && m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : null
 
-    if (!mentionedJid) return conn.reply(m.chat, `🐱 𓆩 ***𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟*** 𓆪 🐱
+    if (!mentionedJid) return conn.reply(m.chat, `🐱 𓆩 ***𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠*** 𓆪 🐱
 
 *Uso:*
 .${command} @user → Para expulsar
@@ -33,7 +33,7 @@ let handler = async (m, { conn, participants, usedPrefix, command }) => {
 👑 *Por:* @${m.sender.split('@')[0]}
 
 ━━━━━━━━━━━
-*Powered by*: ***Garfield Bot Oficial*** 🍕`, m, { mentions: [mentionedJid, m.sender] })
+*Powered by*: ***Lu Bot Prem*** 🍕`, m, { mentions: [mentionedJid, m.sender] })
     } catch (e) {
         await m.react('❌')
         conn.reply(m.chat, `❌ *Se ha producido un problema.*\n> *Error:* ${e.message}`, m)
