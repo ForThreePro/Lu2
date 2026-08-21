@@ -2,7 +2,7 @@ let mutedUsers = new Set()
 
 let handler = async (m, { conn, command, participants }) => {
     let mentionedJid = m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : false
-    if (!mentionedJid) return m.reply(`🐱 𓆩 ***𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟*** 𓆪 🐱
+    if (!mentionedJid) return m.reply(`🐱 𓆩 ***𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠*** 𓆪 🐱
 
 *Uso:*
 .mute @user → Para mutear
