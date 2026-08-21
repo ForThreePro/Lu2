@@ -15,7 +15,7 @@ https://chat.whatsapp.com/${link}
 🍕 *No lo compartas con desconocidos*
 
 ━━━━━━━━━━━
-*Powered by*: ***Garfield Bot Oficial*** 🍕`
+*Powered by*: ***Lu Bot Prem*** 🍕`
 
         await conn.reply(m.chat, texto, m)
     } catch (e) {
