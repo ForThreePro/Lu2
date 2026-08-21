@@ -7,7 +7,7 @@ let handler = async (m, { conn, args, command, usedPrefix }) => {
 
   // SET
   if (command.startsWith('set')) {
-    if (!text) return m.reply(`🐱 𓆩 ***𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟*** 𓆪 🐱\n\n📌 *Uso:* ${usedPrefix}${command} <texto>\n\n*Variables:*\n@user = Menciona al user\n@group = Nombre del grupo\n@desc = Descripción del grupo`)
+    if (!text) return m.reply(`🐱 𓆩 ***𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠*** 𓆪 🐱\n\n📌 *Uso:* ${usedPrefix}${command} <texto>\n\n*Variables:*\n@user = Menciona al user\n@group = Nombre del grupo\n@desc = Descripción del grupo`)
 
     chat[`custom${type.charAt(0).toUpperCase() + type.slice(1)}`] = text
     await m.reply(`🐱 𓆩 𝗠𝗘𝗡𝗦𝗔𝗝𝗘 𝗚𝗨𝗔𝗥𝗗𝗔𝗗𝗢 𓆪 🐱\n\n✅ *${type} personalizado guardado*\n\n*Vista previa:*\n${text}`)
