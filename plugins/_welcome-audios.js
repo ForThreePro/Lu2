@@ -7,7 +7,7 @@ let handler = async (m, { conn, args, command, usedPrefix }) => {
 
   // Detectar tipo: welcome / bye / kick
   let type = command.replace('audiowelcome','').replace('audiobye','').replace('audiokick','')
-               .replace('delaudiowelcome','').replace('delaudiobye','').replace('delaudiokick','')
+              .replace('delaudiowelcome','').replace('delaudiobye','').replace('delaudiokick','')
 
   if (command.includes('welcome')) type = 'welcome'
   if (command.includes('bye')) type = 'bye'
@@ -28,7 +28,7 @@ let handler = async (m, { conn, args, command, usedPrefix }) => {
       return m.reply(`🐱 𓆩 𝗟𝗜𝗡𝗞 𝗚𝗨𝗔𝗥𝗗𝗔𝗗𝗢 𓆪 🐱\n\n✅ *Audio de ${type} guardado*\nLink: ${args[0]}`)
     }
 
-    return m.reply(`🐱 𓆩 ***𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟*** 𓆪 🐱\n\n📌 *Uso:* ${usedPrefix}${command} + [responder a audio]\n📌 *Uso:* ${usedPrefix}${command} <link del audio>`)
+    return m.reply(`🐱 𓆩 ***𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠*** 𓆪 🐱\n\n📌 *Uso:* ${usedPrefix}${command} + [responder a audio]\n📌 *Uso:* ${usedPrefix}${command} <link del audio>`)
   }
 
   // DEL AUDIO
