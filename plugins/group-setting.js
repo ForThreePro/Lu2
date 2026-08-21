@@ -29,7 +29,7 @@ ${icon} *Estado:* El grupo fue ${estado.toLowerCase()}
 👑 *Por:* @${m.sender.split('@')[0]}
 
 ━━━━━━━━━━━
-*Powered by*: ***Garfield Bot Oficial*** 🍕`, m, {
+*Powered by*: ***Lu Bot Prem*** 🍕`, m, {
         mentions: [m.sender]
     })
 }
