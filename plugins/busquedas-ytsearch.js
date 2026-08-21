@@ -4,7 +4,7 @@ let handler = async (m, { conn, text }) => {
     let user = `@${m.sender.split('@')[0]}`
     let groupName = m.isGroup? (await conn.groupMetadata(m.chat)).subject : 'Privado'
 
-    if (!text) return m.reply(`🐱 𓆩 ***𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟*** 𓆪 🐱\n\n✨ *¿Qué deseas buscar en YouTube?*\n📌 *Ejemplo:* ${m.prefix}ytsearch king nasir`)
+    if (!text) return m.reply(`🐱 𓆩 ***𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠*** 𓆪 🐱\n\n✨ *¿Qué deseas buscar en YouTube?*\n📌 *Ejemplo:* ${m.prefix}ytsearch king nasir`)
 
     await m.react('🔍')
     try {
@@ -30,7 +30,7 @@ ${res}
 🏷 *Grupo:* ${groupName}
 
 ━━━━━━━━━━━
-*Powered by*: ***Garfield Bot Oficial*** 🍕
+*Powered by*: ***Lu Bot Prem*** 🍕
 *Tip:* Usa .ytmp4 o .ytmp3 con el link`
 
         m.reply(caption, m.chat, { mentions: [m.sender] })
