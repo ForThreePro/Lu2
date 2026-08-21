@@ -5,7 +5,7 @@ let user = a => '@' + a.split('@')[0]
 
 function handler(m, { groupMetadata, command, conn, text }) {
     if (!groupMetadata) return m.reply('🐱 *Este comando solo funciona en grupos*')
-    if (!text) return m.reply(`🐱 𓆩 ***𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟*** 𓆪 🐱
+    if (!text) return m.reply(`🐱 𓆩 ***𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠*** 𓆪 🐱
 
 *Ejemplo de uso:*
 .top *Mejores en PVP*
@@ -49,7 +49,7 @@ ${x} *9.* ${user(i)}
 ${x} *10.* ${user(j)}
 
 ━━━━━━━━━━━
-*Powered by*: ***Garfield Bot Oficial*** 🍕`
+*Powered by*: ***Lu Bot Prem*** 🍕`
 
     m.reply(top, null, { mentions: [a, b, c, d, e, f, g, h, i, j]})
 }
