@@ -27,7 +27,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       { prefijo: '91', bandera: '🇮🇳' }, { prefijo: '61', bandera: '🇦🇺' },
       { prefijo: '64', bandera: '🇳🇿' }, { prefijo: '1', bandera: '🇺🇸' },
       { prefijo: '7', bandera: '🇷🇺' }, { prefijo: '63', bandera: '🇵🇭' },
-      { prefijo: '95', bandera: '🇲🇲' }
+      { prefijo: '95', bandera: '🇲' }
     ]
 
     const getCountryFlag = (mem) => {
@@ -53,7 +53,7 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
     // Ordenar las banderas según el orden definido
     const orderedFlags = countryFlags.map(c => c.bandera).concat(['🚩'])
 
-    // Texto con diseño GARFIELD BOT OFICIAL
+    // Texto con diseño LU BOT PREM
     let messageText = `🐱 𓆩 𝗜𝗡𝗩𝗢𝗖𝗔𝗖𝗜𝗢𝗡 𝗚𝗘𝗡𝗘𝗥𝗔𝗟 𓆪 🐱
 
 .⃟𖥔 ݁. 𖦹˙— \`\` ${groupName} \`\` —˙𖦹.🍕꒷
@@ -77,13 +77,13 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
 
     messageText += `
 ━━━━━━━━━━━
-*Powered by*: ***Garfield Bot Oficial*** 🍕
+*Powered by*: ***Lu Bot Prem*** 🍕
 *Owner*: @whois.yallico`
 
     // IMAGENES ROTATORIAS
     const images = [
-      'https://files.evogb.win/QFXQtu.jpg',
-      'https://files.evogb.win/E2yVdA.jpg'
+      'https://files.evogb.win/zocch8.jpg',
+      'https://files.evogb.win/zocch8.jpg'
     ]
     const imageUrl = { url: images[Math.floor(Math.random() * images.length)] }
 
@@ -93,18 +93,15 @@ const handler = async (m, { isOwner, isAdmin, conn, participants, args }) => {
       mentions: participants.map(a => a.jid || a.id)
     }, { quoted: m })
 
-    await m.react('📢')
-
-  } catch (error) {
-    console.error("[ERROR EN TODOS]:", error)
+  } catch (e) {
     await m.react('❌')
-    conn.reply(m.chat, `❌ Ocurrió un error al ejecutar el comando.`, m)
+    m.reply(`❌ *Error:* ${e.message}`)
   }
 }
 
-handler.help = ['todos <texto>']
+handler.help = ['tagall', 'invocar']
 handler.tags = ['grupos']
-handler.command = /^(todos|invocar|tagall)$/i
+handler.command = /^(tagall|invocar|todos)$/i
 handler.admin = true
 handler.group = true
 
