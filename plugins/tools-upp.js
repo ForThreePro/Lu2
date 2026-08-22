@@ -5,7 +5,7 @@ import { fileTypeFromBuffer } from "file-type"
 let handler = async (m, { conn }) => {
   let q = m.quoted? m.quoted : m
   let mime = (q.msg || q).mimetype || ''
-  if (!mime) return conn.reply(m.chat, `🐱 *𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟* 🐱
+  if (!mime) return conn.reply(m.chat, `🐱 *𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠* 🐱
 
 *━━━━━━━━━━*
 *⚠️ ERROR DE USO ⚠️*
@@ -14,9 +14,7 @@ let handler = async (m, { conn }) => {
 *➤* Responde a una *imagen, video, audio o documento*
 *➤* Formatos: *Imagen | Video | Audio | Doc*
 
-*━━━━━━━━━━*
-*Owner:* @whois.yallico 
-*WhatsApp:* +51 927 174 369`, m)
+*━━━━━━━━━━*`, m)
 
   try {
     await conn.sendMessage(m.chat, { react: { text: '⏳', key: m.key } })
@@ -24,9 +22,9 @@ let handler = async (m, { conn }) => {
     let link = await myCloud(media)
     if (!link.url) throw new Error()
 
-    let txt = `🐱 *𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟* 🐱
+    let txt = `🐱 *𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠* 🐱
 
-*━━━━━━━━━━━━━━━━━━*
+*━━━━━━━━━━*
 *✅ ARCHIVO SUBIDO CORRECTAMENTE*
 
 *📊 DATOS DEL ARCHIVO*
@@ -34,19 +32,17 @@ let handler = async (m, { conn }) => {
 *➤ ID:* ${link.id || 'N/A'}
 *➤ Peso:* ${formatBytes(media.length)}
 *➤ Servidor:* *evogb.win*
-*➤ Bot:* ***Garfield Bot Oficial***
+*➤ Bot:* ***Lu Bot Prem***
 
-*━━━━━━━━━━━━━━━━━━*
-*Owner:* @whois.yallico 
-*WhatsApp:* +51 927 174 369
-> _"Guardado en la nube por Garfield Bot"_ ☁️⚡`
+*━━━━━━━━━━*
+> _"Guardado en la nube por Lu Bot Prem"_ ☁️⚡`
 
-    await conn.sendFile(m.chat, media, 'garfield.' + link.url.split('.').pop(), txt, m)
+    await conn.sendFile(m.chat, media, 'lubotprem.' + link.url.split('.').pop(), txt, m)
     await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } })
   } catch (e) {
     console.error(e)
     await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key } })
-    await conn.reply(m.chat, `🐱 *𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟* 🐱
+    await conn.reply(m.chat, `🐱 *𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠* 🐱
 
 *━━━━━━━━━━*
 *❌ ERROR DE SUBIDA ❌*
@@ -55,9 +51,7 @@ let handler = async (m, { conn }) => {
 *➤* No se pudo subir el archivo
 *➤* Intenta con otro archivo
 
-*━━━━━━━━━━*
-*Owner:* @whois.yallico 
-*WhatsApp:* +51 927 174 369`, m)
+*━━━━━━━━━━*`, m)
   }
 }
 
