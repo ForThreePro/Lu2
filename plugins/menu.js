@@ -2,14 +2,14 @@ import os from 'os'
 import { performance } from 'perf_hooks'
 
 let handler = async (m, { conn, usedPrefix }) => {
-  let loadMsg = await conn.reply(m.chat, `🐱 𓆩 𝗖𝗔𝗥𝗚𝗔𝗡𝗗𝗢 𝗠𝗘𝗡𝗨 𓆪 🐱\n\n⏳ *Espere un momento...*\n> Cargando sistema Garfield...`, m)
+  let loadMsg = await conn.reply(m.chat, `🐱 𓆩 𝗖𝗔𝗥𝗚𝗔𝗡𝗗𝗢 𝗠𝗘𝗡𝗨 𓆪 🐱\n\n⏳ *Espere un momento...*\n> Cargando sistema Lu Bot Prem...`, m)
 
   let taguser = m.mentionedJid && m.mentionedJid[0]? m.mentionedJid[0] : m.quoted? m.quoted.sender : m.sender
 
   // Rota las 2 fotos
   const images = [
-    'https://files.evogb.win/QFXQtu.jpg',
-    'https://files.evogb.win/E2yVdA.jpg'
+    'https://files.evogb.win/zocch8.jpg',
+    'https://files.evogb.win/zocch8.jpg'
   ]
   let img = { url: images[Math.floor(Math.random() * images.length)] }
 
@@ -47,12 +47,12 @@ let handler = async (m, { conn, usedPrefix }) => {
     nsfw: 'NSFW', audio: 'AUDIO', prem: 'PREM', otros: 'OTROS'
   }
 
-  let menu = `🐱 𓆩 ***𝗚𝗔𝗥𝗙𝗜𝗘𝗟𝗗 𝗕𝗢𝗧 𝗢𝗙𝗜𝗖𝗜𝗔𝗟*** 𓆪 🐱\n\n`
+  let menu = `🐱 𓆩 ***𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠*** 𓆪 🐱\n\n`
   menu += `⤷ ┇ 𝐕𝐄𝐑𝐒𝐈𝐎𝐍 ﹒ 3.0 PREM ：✿ 。\n`
   menu += `꒰ ◞⁺⊹ ．estado: *EN LINEA* • ${_uptime}\n\n`
   menu += ` ꒱ ׁ. ᘏ 𝗨𝗦𝗨𝗔𝗥𝗜𝗢 𝗔𝗖𝗧𝗜𝗩𝗢 ׅ 𝆬 ָ֢ ෆ\n`
   menu += `🐱 ࣪ ꕀ @${taguser.split('@')[0]}. ˚. ᵎᵎ\n`
-  menu += `> *Bienvenido al sistema Garfield*\n\n`
+  menu += `> *Bienvenido al sistema Lu Bot Prem*\n\n`
   menu += `──🍃 *INFORMACION DEL BOT* ╏ 💚\n`
   menu += `*Usuarios*: ${totalreg} | *Comandos*: ${totalcmd}\n`
   menu += `*Owner*: ${ownerTag}\n`
@@ -65,7 +65,7 @@ let handler = async (m, { conn, usedPrefix }) => {
   menu += `> ❍ 𝖴𝗌𝖺. 𝖺𝗇𝗍𝖾𝗌 𝖽𝖾 𝖼𝖺𝖽𝖺 𝖼𝗈𝗆𝖺𝗇𝖽𝗈 𝗉𝖺𝗋𝖺 𝖺𝖼𝗍𝗂𝗏𝖺𝗋𝗅𝗈\n`
 
   for (let category in groups) {
-    let icon = icons[category] || '📁'
+    let icon = icons[category] || '🐱'
     let catName = categoryNames[category] || category.toUpperCase()
     menu += `.⃟𖥔 ݁. 𖦹˙— \`\`𝐏𝐫𝐞𝐦\`\` —˙𖦹.${icon}꒷\n`
     for (let cmd of groups[category]) {
@@ -75,11 +75,11 @@ let handler = async (m, { conn, usedPrefix }) => {
   }
 
   menu += `━━━━━━━━━━━\n`
-  menu += `🐱 ***Garfield Bot Oficial*** 🐱\n`
+  menu += `🐱 ***Lu Bot Prem*** 🐱\n`
   menu += `*Owner*: ${ownerTag}\n`
   menu += `*Contacto*: +${numBot}\n`
   menu += `*Version*: 3.0 PREM\n`
-  menu += `*Power*: Nivel Garfield\n`
+  menu += `*Power*: Nivel Lu\n`
   menu += `> "Odio los lunes... pero amo la lasaña" 🍕\n`
   menu += `━━━━━━━━━━━`
 
