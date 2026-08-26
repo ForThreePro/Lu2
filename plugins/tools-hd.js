@@ -1,120 +1,78 @@
-import fetch from "node-fetch"
-import FormData from "form-data"
-import crypto from "crypto"
+import axios from 'axios';
+import FormData from 'form-data';
 
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-    const key = Buffer.from('c2FzdWtl', 'base64').toString('utf-8')
-    let q = m.quoted? m.quoted : m
-    let mime = (q.msg || q).mimetype || ''
-    let urlTarget = text? text.trim() : ''
-    let start = Date.now()
-
-    if (!urlTarget &&!/image\/(jpe?g|png)/.test(mime)) {
-        return conn.reply(m.chat, `🐱 *𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 - 𝗛𝗗* 🐱
-
-*━━━━━━━━━━*
-*⚠️ ERROR DE USO*
-
-*Instrucciones:*
-*➤* Responde a una *imagen JPG/PNG*
-*➤* O envia un *link de imagen*
-*➤* Ejemplo: *${usedPrefix + command}*
-
-*Formatos:* *JPG | PNG*
-
-*━━━━━━━━━━*`, m)
-    }
-
-    await m.react('⏳')
-    try {
-        let finalUrl = urlTarget
-
-        if (!finalUrl && /image\/(jpe?g|png)/.test(mime)) {
-            let imgBuffer = await q.download()
-            let ext = mime.split('/')[1] || 'jpg'
-            let filename = 'lubotprem-' + crypto.randomBytes(8).toString('hex') + '.' + ext
-
-            let formulario = new FormData()
-            formulario.append('file', imgBuffer, { filename, contentType: mime })
-
-            let resUpload = await fetch(`https://api.evogb.org/tools/upload?key=${key}`, {
-                method: 'POST',
-                body: formulario,
-                headers: {
-                  ...formulario.getHeaders(),
-                    'User-Agent': 'Mozilla/5.0'
-                }
-            })
-            let jsonUpload = await resUpload.json()
-            if (jsonUpload.status && jsonUpload.url) {
-                finalUrl = jsonUpload.url
-            } else {
-                await m.react('❌')
-                return m.reply(`🐱 *𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 - 𝗛𝗗* 🐱
-
-*━━━━━━━━━━*
-*❌ ERROR AL SUBIR*
-
-*➤* No se pudo subir la imagen
-*➤* Detalle: ${jsonUpload?.message || 'Sin respuesta'}
-
-*━━━━━━━━━━*`)
-            }
-        }
-
-        let resDl = await fetch(`https://api.evogb.org/tools/upscale?method=url&url=${encodeURIComponent(finalUrl)}&key=${key}`)
-        let contentType = resDl.headers.get("content-type")
-
-        if (contentType && contentType.includes("application/json")) {
-            let jsonDl = await resDl.json()
-            await m.react('❌')
-            return m.reply(`🐱 *𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 - 𝗛𝗗* 🐱
-
-*━━━━━━━━━━*
-*❌ ERROR DE API*
-
-*➤* ${jsonDl.message || 'No se pudo mejorar la imagen'}
-
-*━━━━━━━━━━*`)
-        }
-
-        let buffer = await resDl.buffer()
-        let time = ((Date.now() - start) / 1000).toFixed(2)
-
-        let info = `🐱 *𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 - 𝗛𝗗* 🐱
-
-*━━━━━━━━━━*
-*✅ IMAGEN MEJORADA*
-
-*📊 DATOS*
-*➤ Tiempo:* ${time} segundos
-*➤ Comando:* *${command}*
-*➤ Calidad:* *4K Ultra HD*
-*➤ Bot:* ***Lu Bot Prem***
-
-*━━━━━━━━━━*
-> _"Mejorado con IA por Lu Bot Prem"_ ✨`
-
-        await conn.sendMessage(m.chat, { image: buffer, caption: info }, { quoted: m })
-        await m.react('✅')
-
-    } catch (e) {
-        console.error(e)
-        await m.react('❌')
-        m.reply(`🐱 *𝗟𝗨 𝗕𝗢𝗧 𝗣𝗥𝗘𝗠 - 𝗛𝗗* 🐱
-
-*━━━━━━━━━━*
-*❌ ERROR DE SISTEMA*
-
-*➤* Error al procesar la imagen
-*➤* Intenta de nuevo en unos segundos
-
-*━━━━━━━━━━*`)
-    }
+// FUNCION PARA REACCIONES COMPATIBLE
+const react = async (conn, m, text) => {
+  try { await conn.sendMessage(m.chat, { react: { text: text, key: m.key } }) } catch {}
 }
 
-handler.help = ['upscale', 'remini', 'hd', 'mejorar']
-handler.tags = ['tools']
-handler.command = /^(upscale|remini|hd|mejorar)$/i
+let handler = async (m, { conn, prefix, command }) => {
+  try {
+    let q = m.quoted? m.quoted : m;
+    let mime = (q.msg || q).mimetype || '';
 
-export default handler
+    if (!mime) return m.reply(`📸 Responde a una imagen con el comando *${prefix}${command}*`);
+    if (!mime.startsWith('image')) return m.reply(`⚠️ Solo se admiten imágenes.`);
+
+    await react(conn, m, "⚡");
+    await m.reply('⏳ Mejorando calidad de la imagen...')
+
+    const media = await q.download();
+
+    // Procesamiento con IA
+    const enhancedBuffer = await ihancer(media, { method: 1, size: 'high' });
+
+    const caption = `╭─「 MEJORAR IMAGEN CON IA 」
+│
+│ ⚙️ PROCESO: iHancer AI
+│ 🔝 CALIDAD: Alta
+│ 📦 RESULTADO: Imagen HD
+│
+╰───────────────────────
+Listo, tu imagen fue mejorada.`
+
+    await conn.sendMessage(m.chat, {
+      image: enhancedBuffer,
+      caption
+    }, { quoted: m });
+
+    await react(conn, m, "✅");
+
+  } catch (e) {
+    console.error(e);
+    await react(conn, m, "❌");
+    await m.reply(`❌ Ocurrió un error al procesar la imagen.`);
+  }
+};
+
+async function ihancer(buffer, { method = 1, size = 'low' } = {}) {
+    const _size = ['low', 'medium', 'high']
+    if (!buffer ||!Buffer.isBuffer(buffer)) throw new Error('Se requiere una imagen')
+    if (method < 1 || method > 4) throw new Error('Métodos disponibles: 1, 2, 3, 4')
+    if (!_size.includes(size)) throw new Error(`Calidades disponibles: ${_size.join(', ')}`)
+
+    const form = new FormData()
+    form.append('method', method.toString())
+    form.append('is_pro_version', 'false')
+    form.append('is_enhancing_more', 'false')
+    form.append('max_image_size', size)
+    form.append('file', buffer, `file_${Date.now()}.jpg`)
+
+    const { data } = await axios.post('https://ihancer.com/api/enhance', form, {
+        headers: {
+            ...form.getHeaders(),
+            'accept-encoding': 'gzip',
+            'host': 'ihancer.com',
+            'user-agent': 'Dart/3.5 (dart:io)'
+        },
+        responseType: 'arraybuffer'
+    })
+    return Buffer.from(data)
+}
+
+handler.help = ['hd', 'upscale', 'enhance', 'remini'];
+handler.tags = ['ai', 'imagen'];
+handler.command = ['hd', 'upscale', 'enhance', 'remini'];
+handler.limit = true;
+
+export default handler;
